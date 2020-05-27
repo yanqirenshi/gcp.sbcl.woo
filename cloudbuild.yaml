@@ -5,5 +5,8 @@ steps:
   # Push the container image to Container Registry
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/gcp-sbcl-woo/sbcl-woo']
+  # Deploy container image to Cloud Run
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: ['run', 'deploy', 'sbcl-woo', '--image', 'gcr.io/gcp-sbcl-woo/sbcl-woo', '--region', 'asia-northeast1', '--platform', 'managed', '--allow-unauthenticated']
 
 images: ['gcr.io/gcp-sbcl-woo/sbcl-woo']

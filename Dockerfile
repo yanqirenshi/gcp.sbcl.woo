@@ -72,6 +72,15 @@ COPY ./gcp-sbcl-woo.ros /home/appl-user/prj/gcp.sbcl.woo/gcp-sbcl-woo.ros
 
 
 ##### ################################################################
+#####   build
+##### ################################################################
+USER appl-user
+WORKDIR /home/appl-user/prj/gcp.sbcl.woo
+
+RUN ros build gcp-sbcl-woo.ros
+
+
+##### ################################################################
 #####   gcp.sbcl.woo
 ##### ################################################################
 USER appl-user
@@ -79,4 +88,4 @@ WORKDIR /home/appl-user/tmp
 
 EXPOSE 8080
 
-CMD ["/usr/bin/ros", "/home/appl-user/prj/gcp.sbcl.woo/gcp-sbcl-woo.ros"]
+CMD ["/home/appl-user/prj/gcp.sbcl.woo/gcp-sbcl-woo"]
